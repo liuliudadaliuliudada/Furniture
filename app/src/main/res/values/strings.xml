@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">舍予家具</string>
+    <string name="home">首页</string>
+    <string name="type">分类</string>
+    <string name="shopCar">购物车</string>
+    <string name="mine">我的</string>
+</resources>

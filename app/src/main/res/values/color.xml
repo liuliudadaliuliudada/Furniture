@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="backgroundcolor">#f1efef</color>
+    <color name="shallowgray">#e1e1e1</color>
+    <color name="textgray">#A39898</color>
+    <color name="red">#ff5900</color>
+    <color name="pale">#ed9e74</color>
+    <color name="palemore">#e6844f</color>
+    <color name="orange">#e9b599</color>
+    <color name="black">#1e1e1d</color>
+    <color name="textcolor">#898989</color>
+
+</resources>
