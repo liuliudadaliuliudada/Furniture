@@ -3,6 +3,8 @@ package com.example.tick.furniture.Mine;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -27,8 +29,10 @@ public class Register extends Activity implements View.OnClickListener{
     private CheckBox cb_pro;
     private Button bt_registernext;
     private Context thisContext;//用于吐司显示窗口
-    private EditText et_phone;
+    private EditText et_phone,et_vcode;
     private View dialogView;
+    private SMS sms;
+    private IntentFilter receiverFilter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +40,18 @@ public class Register extends Activity implements View.OnClickListener{
         thisContext = this;
         initView();
         BmobSMS.initialize(this,"c6a4ff3935571d3c911e209822000610");
+        //注册广播监听器
+        receiverFilter = new IntentFilter();
+        sms = new SMS();
+        registerReceiver(sms,receiverFilter);
     }
+//注销广播监听
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(sms);
+    }
+
     public void initView(){
         iv_back = (ImageView) findViewById(R.id.iv_phoneRegister_back);
         bt_registernext = (Button) findViewById(R.id.bt_registernext);
@@ -68,23 +83,37 @@ public class Register extends Activity implements View.OnClickListener{
         }
     }
     public void sendMessage(String num){
-  /*     BmobSMS.requestSMSCode(this, num, "Test1.0", new RequestSMSCodeListener() {
-           @Override
-           public void done(Integer integer, BmobException e) {
-               if(e==null){
-                   Toast.makeText(thisContext,"发送成功",Toast.LENGTH_SHORT).show();
-                   if(dialogView==null){
-                        dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_register,null);
-                   }
-                   new AlertDialog.Builder(thisContext).setView(dialogView).setMessage("").setPositiveButton("确定",null).show();
-               }
-           }
-       });
-       */
+//       BmobSMS.requestSMSCode(this, num, "Test1.0", new RequestSMSCodeListener() {
+//           @Override
+//           public void done(Integer integer, BmobException e) {
+//               if(e==null){
+//                   Toast.makeText(thisContext,"发送成功",Toast.LENGTH_SHORT).show();
+//                   if(dialogView==null){
+//                        dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_register,null);
+//                   }
+//                   new AlertDialog.Builder(thisContext).setView(dialogView).setMessage("").setPositiveButton("确定",null).show();
+//               }
+//           }
+//       });
+
         //测试
         if(dialogView==null){
             dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_register,null);
+            et_vcode = (EditText) dialogView.findViewById(R.id.et_vcode);
         }
-        new AlertDialog.Builder(thisContext).setView(dialogView).setMessage("").setPositiveButton("确定",null).show();
+        new AlertDialog.Builder(thisContext).setView(dialogView).setMessage("").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).show();
+    }
+
+    public EditText getEt_vcode() {
+        return et_vcode;
+    }
+
+    public void setEt_vcode(String mess) {
+        et_vcode.setText(mess);
     }
 }
