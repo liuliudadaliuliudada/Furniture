@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/iv_phoneRegister_back"
+            android:id="@+id/iv_phone_login_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/back" />
@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="手机注册"
+            android:layout_marginRight="10dp"
+            android:text="手机登录"
             android:textSize="@dimen/font_normal" />
     </LinearLayout>
 
@@ -32,11 +33,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="@dimen/etfont"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/phone_register">
+        android:background="@drawable/edgin_corner">
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +50,7 @@
 
         <EditText
             android:id="@+id/et_phone"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="请输入手机号"
@@ -58,67 +59,62 @@
             android:maxLines="1"
             android:textColor="@color/black"
             android:textColorHint="@color/shallowgray" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp">
-
-        <CheckBox
+        <ImageView
+            android:id="@+id/iv_phoneclear"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/cb_protocol"
-            android:checked="true"
-            android:button="@null"
-            android:background="@drawable/cb_protocol"
-            />
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/clear"
+            android:visibility="invisible" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical"
-            android:text="同意"
-            android:textColor="@color/textcolor" />
-
-        <TextView
-            android:id="@+id/register_protocol"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="舍予家具注册协议" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/et_vcode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/etfont"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:maxLength="6"
+        android:inputType="phone"
+        android:hint="验证码"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edgin_corner"
+        />
+
     <Button
-        android:id="@+id/bt_registernext"
+        android:id="@+id/bt_verify"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/login_button"
-        android:text="下一步"
+        android:text="验 证"
         android:textColor="@color/white"
         android:textSize="@dimen/font_normal" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textcolor"
-            android:text="遇到问题？" />
+            android:text="遇到问题？"
+            android:textColor="@color/textcolor" />
+
         <TextView
             android:id="@+id/link_ser"
             android:layout_width="wrap_content"

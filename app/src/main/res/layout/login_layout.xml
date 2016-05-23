@@ -5,11 +5,10 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:id="@+id/login_back"
@@ -18,13 +17,29 @@
             android:background="@drawable/back" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/tv_titlelg"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/login_back"
             android:gravity="center_horizontal"
             android:text="舍予家具登录"
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_register_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:text="注册账号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_small" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,10 +66,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:background="@null"
-                android:hint="用户名/邮箱/手机号"
+                android:hint="手机号"
                 android:maxLines="1"
                 android:textColorHint="@color/shallowgray"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:text="18318742709"
+                />
 
             <ImageView
                 android:id="@+id/iv_userclear"
@@ -100,6 +117,7 @@
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textColorHint="@color/shallowgray"
+                android:text="123123123"
                 android:textSize="20dp" />
 
             <ImageView
@@ -149,18 +167,20 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
+
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_loginfast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="手机快速注册"
+                android:text="手机快速登录"
                 android:textColor="@color/textcolor"
                 android:textSize="15dp" />
 

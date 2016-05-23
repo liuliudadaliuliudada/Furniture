@@ -1,11 +1,13 @@
 package com.example.tick.furniture;
 
+import android.content.Context;
 import android.media.Image;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -14,11 +16,24 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tick.furniture.Fragment.CarFragment;
 import com.example.tick.furniture.Fragment.HomeFrament;
 import com.example.tick.furniture.Fragment.MineFragment;
 import com.example.tick.furniture.Fragment.TypeFragment;
+import com.example.tick.furniture.Mine.MyUser;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindCallback;
+import cn.bmob.v3.listener.GetListener;
+import cn.bmob.v3.listener.SQLQueryListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     private FragmentManager fgMan;
@@ -31,6 +46,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        //初始化bmob
+        Bmob.initialize(this, "6fe7fb4c95aab82551625bca29b1ff81");
         fgMan = getSupportFragmentManager();
         initView();
     }
@@ -58,6 +75,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mine_layout.setOnClickListener(this);
 
     }
+    //toast
+    public void show(String s){
+        Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
+    }
     //清空所有操作
     public void  clear(){
         home_img.setImageResource(R.drawable.hon);
@@ -82,17 +103,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         clear();
         hideFragment(fTransaction);
         switch(index){
-            case 0:
+            case 0://主页
                 home_img.setImageResource(R.drawable.hoy);
                 if(fhome==null){//如果为空，创建对象
                     fhome = new HomeFrament();
                     fTransaction.add(R.id.frament,fhome);
                 }else{//不为空，显示出来
                     fTransaction.show(fhome);
+
                 }
                 tv_home.setTextColor(this.getResources().getColor(R.color.palemore));
                 break;
-            case 1:
+            case 1://分类
                 type_img.setImageResource(R.drawable.tyy);
                 if(ftype==null){//如果为空，创建对象
                     ftype = new TypeFragment();
@@ -101,8 +123,26 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     fTransaction.show(ftype);
                 }
                 tv_type.setTextColor(this.getResources().getColor(R.color.palemore));
+
+                //测试保存
+//                MyUser user = new MyUser();
+//                user.setUsername("18318742709");
+//                user.setPassword("123123123");
+//                user.setSex(true);
+//                user.setNick("Tick");
+//                user.signUp(this, new SaveListener() {
+//                    @Override
+//                    public void onSuccess() {
+//                        show("申请成功");
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int i, String s) {
+//                        show("申请失败");
+//                    }
+//                });
                 break;
-            case 2:
+            case 2://购物车
                 car_img.setImageResource(R.drawable.cary);
                 if(fcar==null){//如果为空，创建对象
                     fcar = new CarFragment();
@@ -111,8 +151,23 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     fTransaction.show(fcar);
                 }
                 tv_car.setTextColor(this.getResources().getColor(R.color.palemore));
+
+//                //测试更新
+//                userClient.setSex("女");
+//                userClient.update(this, userClient.getObjectId(), new UpdateListener() {
+//                    @Override
+//                    public void onSuccess() {
+//                        Log.d("aaaaa","更新成功");
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int i, String s) {
+//                        Log.d("aaaaa","更新失败");
+//                    }
+//                });
+
                 break;
-            case 3:
+            case 3://个人信息
                 mine_img.setImageResource(R.drawable.myy);
                 if(fmine==null){//如果为空，创建对象
                     fmine = new MineFragment();
@@ -120,6 +175,25 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 }else{//不为空，显示出来
                     fTransaction.show(fmine);
                 }
+                //使用bsql查询
+//                String sql = "select * from UserClient where username=18318742709";
+//                BmobQuery<UserClient> query = new BmobQuery<UserClient>();
+//                query.setSQL(sql);
+//                query.doSQLQuery(this, new SQLQueryListener<UserClient>() {
+//                    @Override
+//                    public void done(BmobQueryResult<UserClient> bmobQueryResult, BmobException e) {
+//                        if (e == null) {
+//                            List<UserClient> list = bmobQueryResult.getResults();
+//                            if(list!=null && list.size()>0){
+//
+//                            }else{
+//                                Log.i("smile", "查询成功，无数据返回");
+//                            }
+//                        } else {
+//                            Log.i("smile", "错误码：" + e.getErrorCode() + "，错误描述：" + e.getMessage());
+//                        }
+//                    }
+//                });
                 tv_mine.setTextColor(this.getResources().getColor(R.color.palemore));
                 break;
         }
