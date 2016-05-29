@@ -70,7 +70,6 @@
                 android:maxLines="1"
                 android:textColorHint="@color/shallowgray"
                 android:textSize="20dp"
-                android:text="18318742709"
                 />
 
             <ImageView
@@ -117,7 +116,6 @@
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textColorHint="@color/shallowgray"
-                android:text="123123123"
                 android:textSize="20dp" />
 
             <ImageView

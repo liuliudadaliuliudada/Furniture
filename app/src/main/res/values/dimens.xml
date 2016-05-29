@@ -5,4 +5,8 @@
     <dimen name="font_normal">20dp</dimen>
     <dimen name="font_small">15dp</dimen>
     <dimen name="etfont">45dp</dimen>
+    <dimen name="hight_normal">45dp</dimen>
+    <dimen name="hight_big">90dp</dimen>
+    <dimen name="hight_small">10dp</dimen>
+    <dimen name="hight_min">1dp</dimen>
 </resources>

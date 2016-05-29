@@ -106,7 +106,7 @@
                         android:layout_marginTop="20dp"
                         android:textSize="18sp" />
                     <TextView
-                        android:id="@+id/user_name"
+                        android:id="@+id/phone_num"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -114,7 +114,6 @@
                         android:text="m18318742709"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
-
                 </LinearLayout>
                 <ImageView
                     android:layout_width="30dp"

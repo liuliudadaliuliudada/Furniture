@@ -36,6 +36,7 @@
         <activity android:name=".Mine.Login" />
         <activity android:name=".Mine.PhoneLogin"></activity>
         <activity android:name=".Mine.RegisterClient"></activity>
+        <activity android:name=".Mine.UserInfo"></activity>
     </application>
 
 </manifest>

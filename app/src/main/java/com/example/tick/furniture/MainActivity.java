@@ -41,6 +41,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private LinearLayout home_layout, type_layout, car_layout, mine_layout;
     private ImageView home_img,type_img,car_img,mine_img;
     private TextView tv_home,tv_type,tv_car,tv_mine;
+    public MyUser myUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,11 +69,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         tv_car = (TextView) findViewById(R.id.tv_car);
         tv_mine = (TextView) findViewById(R.id.tv_mine);
 
-
         home_layout.setOnClickListener(this);
         type_layout.setOnClickListener(this);
         car_layout.setOnClickListener(this);
         mine_layout.setOnClickListener(this);
+        //进入界面初始化主页
+        selectItem(0);
 
     }
     //toast
@@ -124,23 +126,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 }
                 tv_type.setTextColor(this.getResources().getColor(R.color.palemore));
 
-                //测试保存
-//                MyUser user = new MyUser();
-//                user.setUsername("18318742709");
-//                user.setPassword("123123123");
-//                user.setSex(true);
-//                user.setNick("Tick");
-//                user.signUp(this, new SaveListener() {
-//                    @Override
-//                    public void onSuccess() {
-//                        show("申请成功");
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int i, String s) {
-//                        show("申请失败");
-//                    }
-//                });
                 break;
             case 2://购物车
                 car_img.setImageResource(R.drawable.cary);
@@ -151,21 +136,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     fTransaction.show(fcar);
                 }
                 tv_car.setTextColor(this.getResources().getColor(R.color.palemore));
-
-//                //测试更新
-//                userClient.setSex("女");
-//                userClient.update(this, userClient.getObjectId(), new UpdateListener() {
-//                    @Override
-//                    public void onSuccess() {
-//                        Log.d("aaaaa","更新成功");
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int i, String s) {
-//                        Log.d("aaaaa","更新失败");
-//                    }
-//                });
-
                 break;
             case 3://个人信息
                 mine_img.setImageResource(R.drawable.myy);
